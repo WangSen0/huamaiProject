@@ -1,0 +1,18 @@
+.header{
+	height: 250px;
+	width: 100%;
+	background-color:#011935;
+	-moz-box-shadow:2px 2px 5px #333333;
+	-webkit-box-shadow:2px 2px 5px #333333; 
+	box-shadow:2px 2px 5px #333333;
+}
+
+.header h1{
+	color: #D0E9FF;
+	font-family: 'SThupo';
+	letter-spacing:40px;
+	font-size: 70px;
+	line-height: 250px;
+	text-align: center;
+	vertical-align: 20px;
+}

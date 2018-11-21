@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hengzhi.mapper.ZhuJiLiangKuMapper">
+
+    <resultMap id="ZhuJiLiangKuResult" type="com.hengzhi.entity.ZhuJiLiangKu">
+        <result property="maoZhong" column="毛重"/>
+        <result property="piZhong" column="皮重"/>
+        <result property="jingZhong" column="净重"/>
+        <result property="maoZhongJiLiangYuan" column="毛重计量员"/>
+        <result property="maoZhongRiQi" column="毛重日期"/>
+        <result property="maoZhongShiJian" column="毛重时间"/>
+        <result property="pinZhong" column="品种"/>
+        <result property="jiLiangFangShi" column="计量方式"/>
+        <result property="gongHuoDanWei" column="供货单位"/>
+        <result property="shouHuoDanWei" column="收货单位"/>
+        <result property="bianHao" column="编号"/>
+        <result property="cheHao" column="车号"/>
+        <result property="riQiShiJian" column="日期时间"/>
+        <result property="kaHao" column="卡号"/>
+        <result property="yunShuDanWei" column="运输单位"/>
+        <result property="piZhongJiLiangYuan" column="皮重计量员"/>
+        <result property="piZhongRiQi" column="皮重日期"/>
+        <result property="piZhongShiJian" column="皮重时间"/>
+        <result property="piZhongCha" column="皮重差"/>
+        <result property="chuRuKu" column="出入库"/>
+    </resultMap>
+
+    <select id="showZhuJiLiangKuByPage" resultMap="ZhuJiLiangKuResult">
+         SELECT top ${pageSize} 毛重,皮重,净重,毛重计量员,毛重日期,毛重时间,品种,计量方式,供货单位,收货单位,编号,车号,日期时间,
+         卡号,运输单位,皮重计量员,皮重日期,皮重时间,皮重差,出入库 FROM 主计量库 where 日期时间 not in
+        (select top ${currPage} 日期时间 from 主计量库)
+  </select>
+
+    <select id="tiaoJianChaXun" parameterType="com.hengzhi.entity.Condition" resultMap="ZhuJiLiangKuResult">
+        SELECT 毛重,皮重,净重,毛重计量员,毛重日期,毛重时间,品种,计量方式,供货单位,收货单位,编号,车号,日期时间,卡号,运输单位,皮重计量员,皮重日期,皮重时间,皮重差,出入库 FROM 主计量库
+        <where>
+        <if test="tiaoJian.pinZhong != null and tiaoJian.pinZhong != ''" >
+            and 品种 LIKE '%'+#{tiaoJian.pinZhong}+'%'
+        </if>
+        <if test="tiaoJian.gongHuoDanWei != null and tiaoJian.gongHuoDanWei != ''" >
+            and 供货单位 LIKE '%'+#{tiaoJian.gongHuoDanWei}+'%'
+        </if>
+        <if test="tiaoJian.cheHao != null and tiaoJian.cheHao != ''" >
+            and 车号 LIKE '%'+#{tiaoJian.cheHao}+'%'
+        </if>
+        <if test="tiaoJian.riQiShiJian != null and tiaoJian.riQiShiJian != ''" >
+            and 日期时间 LIKE '%'+#{tiaoJian.riQiShiJian}+'%'
+        </if>
+        </where>
+    </select>
+
+    <!--统计总车数-->
+    <select id="tongJiCheShu" parameterType="com.hengzhi.entity.Condition" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM 主计量库
+        <where>
+            <if test="tiaoJian.pinZhong != null and tiaoJian.pinZhong != ''" >
+                and 品种 LIKE '%'+#{tiaoJian.pinZhong}+'%'
+            </if>
+            <if test="tiaoJian.gongHuoDanWei != null and tiaoJian.gongHuoDanWei != ''" >
+                and 供货单位 LIKE '%'+#{tiaoJian.gongHuoDanWei}+'%'
+            </if>
+            <if test="tiaoJian.cheHao != null and tiaoJian.cheHao != ''" >
+                and 车号 LIKE '%'+#{tiaoJian.cheHao}+'%'
+            </if>
+            <if test="tiaoJian.riQiShiJian != null and tiaoJian.riQiShiJian != ''" >
+                and 日期时间 LIKE '%'+#{tiaoJian.riQiShiJian}+'%'
+            </if>
+        </where>
+    </select>
+
+    <!--统计总净重数-->
+    <select id="tongJiJingZhong" parameterType="com.hengzhi.entity.Condition" resultType="java.lang.Integer">
+        SELECT SUM (净重)FROM 主计量库
+        <where>
+            <if test="tiaoJian.pinZhong != null and tiaoJian.pinZhong != ''" >
+                and 品种 LIKE '%'+#{tiaoJian.pinZhong}+'%'
+            </if>
+            <if test="tiaoJian.gongHuoDanWei != null and tiaoJian.gongHuoDanWei != ''" >
+                and 供货单位 LIKE '%'+#{tiaoJian.gongHuoDanWei}+'%'
+            </if>
+            <if test="tiaoJian.cheHao != null and tiaoJian.cheHao != ''" >
+                and 车号 LIKE '%'+#{tiaoJian.cheHao}+'%'
+            </if>
+            <if test="tiaoJian.riQiShiJian != null and tiaoJian.riQiShiJian != ''" >
+                and 日期时间 LIKE '%'+#{tiaoJian.riQiShiJian}+'%'
+            </if>
+        </where>
+    </select>
+
+
+
+</mapper>

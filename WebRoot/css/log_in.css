@@ -1,0 +1,58 @@
+.outer {
+	height: auto;
+	margin-top: 100px;
+	background-color: rgba(208, 233, 255, 0.4);
+	border: solid #011935 3px;
+	border-radius: 5px;
+	-moz-box-shadow: 2px 2px 5px #011935, -2px -2px 10px #011935;
+	-webkit-box-shadow: 2px 2px 5px #011935, -2px -2px 10px #011935;
+	box-shadow: 2px 2px 5px #011935, -2px -2px 10px #011935;
+}
+
+#from h2{
+	color: #011935;
+	line-height: 2;
+	text-align: left;
+	font-family: "微软雅黑";
+}
+
+.mycenter {
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	height: 350px;
+	width: 500px;
+	padding: 5%;
+	/*padding-left: 5%;*/
+	padding-right: 5%;
+}
+
+.mycenter .mysign{
+	width: 440px;
+}
+
+.mycenter input,
+checkbox,
+button {
+	margin-top: 5%;
+	/*margin-left: 10%;
+	margin-right: 10%;*/
+}
+
+.mycheckbox {
+	/*margin-top: 0px;*/
+	/*margin-left: 40px;*/
+	margin-bottom: 10px;
+	height: 10px;
+}
+
+#btn{
+	background-color: #011935;
+	color: #D0E9FF;
+	border-color: #D0E9FF;
+	margin-top:20px;
+}
+
+#btn:focus{
+	box-shadow: 0 0 0 0.2rem rgba(208, 233, 255, 1);
+}

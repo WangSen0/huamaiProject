@@ -1,0 +1,56 @@
+/*电脑端*/
+@media screen and (min-width:992px){
+	.header{
+		height: 100px;
+		width: 100%;
+		background-color:#011935;
+		-moz-box-shadow:2px 2px 5px #333333;
+		-webkit-box-shadow:2px 2px 5px #333333; 
+		box-shadow:2px 2px 5px #333333;
+	}
+
+	.header h1{
+		color: #D0E9FF;
+		font-family: 'SThupo';
+		letter-spacing:30px;
+		font-size: 40px;
+		line-height: 100px;
+		text-align: center;
+		vertical-align: 20px;
+	}
+	.container{
+		margin-top: 25px;
+	}
+	.image{
+		width: 100%;
+		margin-bottom: 15px;
+	}
+}
+/*PAD及手机视图*/
+@media screen and (max-width:991px ){
+	.header{
+		height: 100px;
+		width: 100%;
+		background-color:#011935;
+		-moz-box-shadow:2px 2px 5px #333333;
+		-webkit-box-shadow:2px 2px 5px #333333; 
+		box-shadow:2px 2px 5px #333333;
+	}
+
+	.header h1{
+		color: #D0E9FF;
+		font-family: 'SThupo';
+		letter-spacing:30px;
+		font-size: 40px;
+		line-height: 100px;
+		text-align: center;
+		vertical-align: 20px;
+	}
+	.container{
+		margin-top: 25px;
+	}
+	.image{
+		width: 100%;
+		margin-bottom: 15px;
+	}
+}
